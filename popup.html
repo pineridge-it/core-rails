@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 320px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: 600;
+      color: #667eea;
+      margin-bottom: 4px;
+    }
+    
+    .subtitle {
+      font-size: 12px;
+      color: #6b7280;
+    }
+    
+    .stats {
+      background: #f9fafb;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 16px;
+    }
+    
+    .stat-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    
+    .stat-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .stat-label {
+      color: #6b7280;
+    }
+    
+    .stat-value {
+      font-weight: 600;
+      color: #111827;
+    }
+    
+    .controls {
+      margin-bottom: 16px;
+    }
+    
+    .control-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+    
+    .control-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .toggle {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      background: #d1d5db;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    
+    .toggle.active {
+      background: #10b981;
+    }
+    
+    .toggle::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.2s;
+    }
+    
+    .toggle.active::after {
+      transform: translateX(20px);
+    }
+    
+    .input {
+      width: 60px;
+      padding: 4px 8px;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+    
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #6b7280;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 12px;
+    }
+    
+    .link {
+      color: #667eea;
+      text-decoration: none;
+    }
+    
+    .link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">🚫 Babbage Ad-Free</div>
+    <div class="subtitle">Support publishers with micropayments</div>
+  </div>
+  
+  <div class="stats">
+    <div class="stat-item">
+      <span class="stat-label">Today's payments:</span>
+      <span class="stat-value" id="todayPayments">0</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Amount spent:</span>
+      <span class="stat-value" id="amountSpent">$0.000</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Publishers supported:</span>
+      <span class="stat-value" id="publishersSupported">0</span>
+    </div>
+  </div>
+  
+  <div class="controls">
+    <div class="control-item">
+      <span>Enable ad blocking:</span>
+      <div class="toggle active" id="enableToggle"></div>
+    </div>
+    <div class="control-item">
+      <span>Default payment:</span>
+      <input type="number" class="input" id="defaultPayment" value="0.001" step="0.001" min="0.001">
+    </div>
+    <div class="control-item">
+      <span>Auto-pay:</span>
+      <div class="toggle" id="autoPayToggle"></div>
+    </div>
+  </div>
+  
+  <div class="footer">
+    <a href="#" class="link" id="viewHistory">View payment history</a> • 
+    <a href="#" class="link" id="settings">Settings</a>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
+
